@@ -1,0 +1,357 @@
+:root {
+  --teal-900: #00474B;
+  --teal-500: #26C0AB;
+  --teal-300: #9FE8DF;
+  --teal-200: #C5E4E7;
+  --teal-100: #F4FAFA;
+  --grayish-teal-600: #5E7A7D;
+  --grayish-teal-500: #7F9C9F;
+  --grayish-teal-300: #D0DBDC;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body, button, input, textarea {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  background: var(--teal-200);
+  height: 100vh;
+  padding: 2rem 0;
+}
+
+@media (max-height: 650px) {
+  body {
+    height: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  body {
+    font-size: 93.75%;
+  }
+}
+
+body ::-moz-selection {
+  color: var(--teal-100);
+  background: var(--teal-500);
+}
+
+body ::selection {
+  color: var(--teal-100);
+  background: var(--teal-500);
+}
+
+body ::-moz-selection {
+  color: var(--teal-100);
+  background: var(--teal-500);
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5.5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 60vw;
+  height: 100%;
+  margin: auto;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    min-width: 80vw;
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+.card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 950px) {
+  .card {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.card .values-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2.5rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.card .values-box .form-group {
+  width: 100%;
+}
+
+.card .values-box .form-group label {
+  font-size: 1rem;
+  color: var(--grayish-teal-600);
+}
+
+.card .values-box .form-group .input {
+  position: relative;
+}
+
+.card .values-box .form-group .input img {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.card .values-box .form-group .input input {
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-color: var(--teal-100);
+  padding: 0 1rem 0 2.5rem;
+  font-size: 1.5em;
+  text-align: right;
+  color: var(--teal-900);
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+.card .values-box .form-group .input input::-webkit-input-placeholder {
+  color: var(--grayish-teal-300);
+}
+
+.card .values-box .form-group .input input:-ms-input-placeholder {
+  color: var(--grayish-teal-300);
+}
+
+.card .values-box .form-group .input input::-ms-input-placeholder {
+  color: var(--grayish-teal-300);
+}
+
+.card .values-box .form-group .input input::placeholder {
+  color: var(--grayish-teal-300);
+}
+
+.card .values-box .form-group .input input:hover, .card .values-box .form-group .input input:focus {
+  border-color: var(--teal-500);
+}
+
+.card .values-box .form-group .input input:focus {
+  outline: 0;
+}
+
+.card .values-box .tip-percentage h3 {
+  font-size: 1;
+  color: var(--grayish-teal-600);
+  margin-bottom: 1rem;
+}
+
+.card .values-box .tip-percentage .buttons-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: (3.25rem)[2];
+      grid-template-rows: repeat(2, 3.25rem);
+  gap: 1rem;
+}
+
+@media (max-width: 950px) {
+  .card .values-box .tip-percentage .buttons-grid {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: (3.25rem)[3];
+        grid-template-rows: repeat(3, 3.25rem);
+  }
+}
+
+.card .values-box .tip-percentage .buttons-grid button {
+  font-size: 1.5rem;
+  color: var(--teal-100);
+  background-color: var(--teal-900);
+  border: 0;
+  border-radius: 0.5rem;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.card .values-box .tip-percentage .buttons-grid button:hover {
+  background-color: var(--teal-300);
+  color: var(--teal-900);
+}
+
+.card .values-box .tip-percentage .buttons-grid button.active {
+  background-color: var(--teal-500);
+  color: var(--teal-900);
+}
+
+.card .values-box .tip-percentage .buttons-grid input {
+  width: 100%;
+  border: 2px solid transparent;
+  background-color: var(--teal-100);
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--teal-900);
+  border-radius: 8px;
+}
+
+.card .values-box .tip-percentage .buttons-grid input::-webkit-input-placeholder {
+  color: var(--grayish-teal-600);
+}
+
+.card .values-box .tip-percentage .buttons-grid input:-ms-input-placeholder {
+  color: var(--grayish-teal-600);
+}
+
+.card .values-box .tip-percentage .buttons-grid input::-ms-input-placeholder {
+  color: var(--grayish-teal-600);
+}
+
+.card .values-box .tip-percentage .buttons-grid input::placeholder {
+  color: var(--grayish-teal-600);
+}
+
+.card .values-box .tip-percentage .buttons-grid input:hover, .card .values-box .tip-percentage .buttons-grid input:focus {
+  border-color: var(--teal-500);
+}
+
+.card .values-box .tip-percentage .buttons-grid input:focus {
+  outline: 0;
+}
+
+.card .total-box {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 2.5rem;
+  background: var(--teal-900);
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.card .total-box .total-values {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+}
+
+.card .total-box .total-values .values {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.card .total-box .total-values .values > div h6 {
+  font-size: 1.125rem;
+}
+
+.card .total-box .total-values .values > div p {
+  color: var(--teal-100);
+  opacity: 0.5;
+  font-size: 0.875rem;
+}
+
+.card .total-box .total-values .values span {
+  font-size: 3rem;
+  color: var(--teal-500);
+}
+
+.card .total-box .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card .total-box .buttons button {
+  height: 48px;
+  padding: 0 2rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  border-radius: 0.5rem;
+  border: 0;
+  background: var(--teal-500);
+  color: var(--teal-900);
+}
+
+.card .total-box .buttons button:disabled {
+  background: rgba(38, 192, 171, 0.2);
+  color: rgba(0, 71, 75, 0.5);
+}
+/*# sourceMappingURL=styles.css.map */
