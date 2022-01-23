@@ -2,15 +2,16 @@ const Calculate = {
   //calcular o total da taxa de serviço e dividir pelo número de pessoas
   calculateTip() {
     let bill = Form.formatBill()
-    const {customTip, dividedBy} = Form.getValues();
-    const percertageTip = customTip / 100
-    let total = 0;
+    let {customTip, dividedBy} = Form.getValues();
+    customTip = Number(customTip)
+    dividedBy = Number(dividedBy)
+    let percertageTip = customTip / 100
+    let totalTip = 0;
 
-    Form.validate();
 
-    total = bill * percertageTip / dividedBy
+    totalTip = (bill * percertageTip) / dividedBy
 
-    console.log(bill)
+    return totalTip
   },
 
   //Dividir o total por pessoa
@@ -25,10 +26,24 @@ const Utils = {
   },
 
   formatCurrency(value) {
+    value = Number(value)
     value = value / 100
-    value = value.toLocaleString("es-US", {
-      
+    value = value.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL"
     })
+
+    return value
+  }
+}
+
+const DOM = {
+  printTotalTip() {
+    const tipField = document.querySelector('#tipAmoutValue')
+    let totalTip  = Calculate.calculateTip()
+
+    tipField.innerHTML = Utils.formatCurrency(totalTip)
+    console.log(totalTip)
   }
 }
 
@@ -52,6 +67,8 @@ const Form = {
       dividedBy.trim() === '') {
         throw new Error("Please, make sure you've filled all the fields!")
       }
+    
+      return
   },
 
   formatBill() {
@@ -66,7 +83,9 @@ const Form = {
     event.preventDefault();
 
     try {
+      Form.validate()
       Calculate.calculateTip();
+      DOM.printTotalTip();
     } catch (error) {
       alert(error.message)
     }
