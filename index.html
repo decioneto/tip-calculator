@@ -82,7 +82,15 @@
 
         <div class="buttons">
           <button type="submit" class="button">Calcular</button>
-          <button type="reset" class="button" disabled>Reset</button>
+          <button 
+            type="reset" 
+            id="resetButton" 
+            class="button" 
+            disabled
+            onclick="Form.clearFields()"
+          >
+            Reset
+          </button>
         </div>
       </div>
     </form>

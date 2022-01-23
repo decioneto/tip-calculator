@@ -15,6 +15,19 @@ const Calculate = {
   },
 
   //Dividir o total por pessoa
+
+  calculateTotal() {
+    let bill = Form.formatBill()
+    let totalTip = Calculate.calculateTip()
+    let {dividedBy} = Form.getValues();
+    let total = 0
+    totalTip = totalTip * dividedBy
+
+    total = (bill + totalTip) / dividedBy
+
+    return total
+
+  }
 }
 
 const Utils = {
@@ -43,7 +56,13 @@ const DOM = {
     let totalTip  = Calculate.calculateTip()
 
     tipField.innerHTML = Utils.formatCurrency(totalTip)
-    console.log(totalTip)
+  },
+
+  printTotal() {
+    let total = Calculate.calculateTotal();
+    const totalAmountField = document.querySelector('#totalPerPersonValue');
+    
+    totalAmountField.innerHTML = Utils.formatCurrency(total)
   }
 }
 
@@ -79,13 +98,33 @@ const Form = {
     return bill
   },
 
+  reset() {
+    const btnReset = document.querySelector('#resetButton')
+    
+    btnReset.removeAttribute('disabled')
+  },
+
+  clearFields() {
+    const btnReset = document.querySelector('#resetButton')
+    const tipAmountField = document.querySelector('#tipAmoutValue')
+    const totalAmountField = document.querySelector('#totalPerPersonValue')
+    
+    tipAmountField.innerHTML = 'R$ 0,00'
+    totalAmountField.innerHTML = 'R$ 0,00'
+
+    btnReset.setAttribute('disabled', '')
+  },
+
   submit(event) {
     event.preventDefault();
 
     try {
       Form.validate()
       Calculate.calculateTip();
+      Calculate.calculateTotal();
       DOM.printTotalTip();
+      DOM.printTotal();
+      Form.reset();
     } catch (error) {
       alert(error.message)
     }
