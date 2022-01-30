@@ -3,13 +3,17 @@ const Calculate = {
   calculateTip() {
     let bill = Form.formatBill()
     let {customTip, dividedBy} = Form.getValues();
+    let buttonValue = DOM.getButtonValue;
     customTip = Number(customTip)
     dividedBy = Number(dividedBy)
     let percertageTip = customTip / 100
     let totalTip = 0;
 
 
-    totalTip = (bill * percertageTip) / dividedBy
+    // totalTip = (bill * percertageTip) / dividedBy
+    totalTip = (bill * buttonValue) / dividedBy
+
+    console.log(totalTip)
 
     return totalTip
   },
@@ -63,8 +67,33 @@ const DOM = {
     const totalAmountField = document.querySelector('#totalPerPersonValue');
     
     totalAmountField.innerHTML = Utils.formatCurrency(total)
+  },
+
+  getButtonValue() {
+    const buttonValue = this.getAttribute('value')
+
+    return Number(buttonValue) / 100;
+  },
+
+  setButtomActive() {
+    const buttonList = document.querySelector('.buttons-grid')
+    const buttons = buttonList.getElementsByClassName('tip-button')
+
+    for(let i =0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', () => {
+        let current = document.getElementsByClassName('active');
+
+        if(current.length > 0) {
+          current[0].className = current[0].className.replace(' active', '');
+        }
+
+        buttons[i].className += " active";
+      })
+    }
   }
 }
+
+DOM.setButtomActive(); 
 
 const Form = {
   bill: document.querySelector('#bill'),
